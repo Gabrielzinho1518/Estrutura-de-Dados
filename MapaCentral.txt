@@ -1,0 +1,9 @@
+Sao Pedro@Santa Maria@41
+Santa Maria@Itaara@20
+Itaara@Julio de Castilhos@60
+Julio de Castilhos@Cruz Alta@55
+Cruz Alta@Soledade@90
+Soledade@Lajeado@80
+Lajeado@Porto Alegre@110
+Santa Maria@Agudo@60
+Agudo@Porto Alegre@243
