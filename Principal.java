@@ -9,7 +9,6 @@ public class Principal {
         // Lista para armazenar os vértices do grafo
         ArrayList<String> vertices = new ArrayList<>();
         
-        // Lista para armazenar as linhas do arquivo que representam as conexões
         ArrayList<String> linhasArquivo = new ArrayList<>();
         
         // Caminho do arquivo que contém os dados do grafo
@@ -27,7 +26,6 @@ public class Principal {
         // Exibição do grafo
         g.mostrarGrafo();
       
-        // Verificação de caminho entre dois vértices
         System.out.println("Tem caminho entre AGUDO e JULIO DE CASTILHOS? " + g.temCaminhoProfundidade("AGUDO", "JULIO DE CASTILHOS"));
     }
 }
