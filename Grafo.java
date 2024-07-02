@@ -12,6 +12,7 @@ public class Grafo {
     private int qtdVertices;
     private int qtdArestas;
 
+    // Construtor do grafo
     public Grafo(List<String> vertices){
         this.vertices = new ArrayList<>(vertices);
         this.qtdVertices = vertices.size();
@@ -26,6 +27,7 @@ public class Grafo {
         }
     }
 
+    // Método para montar conexões simétricas (bidirecionais) no grafo
     public void montarConexoesSimetricas(List<String> linhas){
         for (String linha : linhas) {
             String[] campos = linha.split("@");
@@ -36,6 +38,7 @@ public class Grafo {
             int indiceOrigem = this.vertices.indexOf(nomeOrigem);
             int indiceDestino = this.vertices.indexOf(nomeDestino);
 
+            // Adiciona a conexão se os índices são válidos e ainda não existe uma aresta
             if (indiceOrigem != -1 && indiceDestino != -1 && this.matriz[indiceOrigem][indiceDestino] == 0) {
                 this.matriz[indiceOrigem][indiceDestino] = custo;
                 this.matriz[indiceDestino][indiceOrigem] = custo;
@@ -44,8 +47,9 @@ public class Grafo {
         }
     }
 
+    // Método para ler o arquivo e montar o grafo
     public static void lerArquivo_montarGrafo(String nomeArquivo, List<String> vertices, List<String> linhas){
-        try (BufferedReader leitor = new BufferedReader(new FileReader(nomeArquivo + ".txt"))) {
+        try (BufferedReader leitor = new BufferedReader(new FileReader(nomeArquivo))) {
             String linha;
             while((linha = leitor.readLine()) != null){
                 linha = linha.toUpperCase();
@@ -65,6 +69,7 @@ public class Grafo {
         }
     }
 
+    // Método para exibir a matriz de adjacência
     public void mostrarMatriz(){
         System.out.print("\t");
         for(int i = 0; i < this.qtdVertices; i++){
@@ -85,6 +90,7 @@ public class Grafo {
         }
     }
 
+    // Método para exibir o grafo
     public void mostrarGrafo(){
         for(int i = 0; i < this.qtdVertices; i++){
             System.out.print(this.vertices.get(i) + ":\t");
@@ -97,6 +103,9 @@ public class Grafo {
         }
     }
 
+
+    
+    // Método para verificar se existe um caminho entre dois vértices usando busca em profundidade
     public boolean temCaminhoProfundidade(String origem, String destino){
         int indiceOrigem = this.vertices.indexOf(origem);
         int indiceDestino = this.vertices.indexOf(destino);
@@ -109,6 +118,7 @@ public class Grafo {
         return testaCaminhoProfundidade(indiceOrigem, indiceDestino, visitados);
     }
 
+    // Método recursivo para busca em profundidade
     private boolean testaCaminhoProfundidade(int no, int destino, List<String> visitados) {
         for(int col = 0; col < this.qtdVertices; col++){
             if(this.matriz[no][col] != 0 && !visitados.contains(this.vertices.get(col))) {
