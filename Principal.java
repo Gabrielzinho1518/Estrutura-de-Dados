@@ -14,16 +14,11 @@ public class Principal {
 
         Grafo g = new Grafo(vertices);
 
-
-        // ler o arquivo e montar as conexoes do arquivo SIMETRICO
         g.montarConexoesSimetricas(linhasArquivo);
 
-        
     
         g.mostrarGrafo();
-        // g.mostrarMatriz();
-
-        
+      
         System.out.println("Tem caminho entre agudo e Julio de Castilhos? " + g.temCaminhoProfundidade("AGUDO", "JULIO DE CASTILHOS"));
     }
 }
